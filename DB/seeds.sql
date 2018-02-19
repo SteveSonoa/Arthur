@@ -1,0 +1,5 @@
+INSERT INTO `user` (`id`,`user_fname`,`user_lname`,`user_email`,`user_company`,`user_linkedIn', 'user_twitter`) VALUES (1000,'Holly','Zoba', "hollyzoba@gmail.com", "Hospitality Digital Marketing", "https://www.linkedin.com/in/hollyzoba/", "@hzoba");
+INSERT INTO `user` (`id`,`user_fname`,`user_lname`,`user_email`,`user_company`,`user_linkedIn','user_twitter`) VALUES (1001,'Steve','Marshall', "stevemarshall@gmail.com", "State Farm", "https://www.linkedin.com/in/sonoa/");
+INSERT INTO `contact` (`id`,`contact_fname`,`contact_lname`,`contact_email`,`contact_company`, `contact_linkedIn`, `contact_twitter`, `contact_workAddress`, `contact_workCity`, `contact_workState`, `contact_workZip`, `contact_workPhone', 'contact_companyWeb`, `contact_dob`, `contact_cell`) VALUES (2000,'Julian','Sandersius', 'juliansandersiusl@gmail.com', 'Ezra Arthur', 'https://www.linkedin.com/in/julian-sandersius-a941a0146/', '@ezraarthur','15 East Jackson', 'Phoenix', 'AZ', '85004', '6023269944', 'ezraarthur.com', '1998-12-20', '4805551212');
+
+
