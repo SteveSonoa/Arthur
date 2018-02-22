@@ -1,6 +1,7 @@
 // Require the necessary packages
 var express = require('express');
 var bodyParser = require('body-parser');
+var passport = require('passport'), LocalStrategy = require('passport-local').Strategy;
 
 // Sync to the DB before starting the server
 var db = require("./models");
