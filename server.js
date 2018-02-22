@@ -1,5 +1,6 @@
 // Require the necessary packages
 var express = require('express');
+var session = require("express-session");
 var bodyParser = require('body-parser');
 var passport = require('passport'), LocalStrategy = require('passport-local').Strategy;
 
@@ -12,7 +13,7 @@ var app = express();
 
 // Setup Passport session requirements
 app.use(express.cookieParser());
-app.use(express.session({ secret: 'keyboard cat' }));
+app.use(session({ secret: 'cats' }));
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -33,11 +34,11 @@ app.use(bodyParser.json());
 
 // Routes
 // =============================================================
-app.post('/login', passport.authenticate('local'), function(req, res) {
-	// If this function gets called, authentication was successful.
-	// `req.user` contains the authenticated user.
-	res.redirect('/users/' + req.user.username);
-});
+// app.post('/login', passport.authenticate('local'), function(req, res) {
+// 	// If this function gets called, authentication was successful.
+// 	// `req.user` contains the authenticated user.
+// 	res.redirect('/users/' + req.user.username);
+// });
 
 app.post('/login', passport.authenticate('local', {
 	successRedirect: '/',
