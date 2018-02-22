@@ -4,8 +4,11 @@
   "description": "Your personal assistant will alert you to upcoming meetings and brief you on the person you're meeting with, including recent activities and breaking news.",
   "main": "server.js",
   "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
     "passport": "^0.4.0",
-    "passport-local": "^1.0.0"
+    "passport-local": "^1.0.0",
+    "sequelize": "^4.33.4"
   },
   "devDependencies": {},
   "scripts": {
