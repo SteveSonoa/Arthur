@@ -3,6 +3,8 @@ var express = require('express');
 var session = require("express-session");
 var bodyParser = require('body-parser');
 var passport = require('passport'), LocalStrategy = require('passport-local').Strategy;
+var path = require('path');
+// var cookieparser = require("cookieparser");
 
 // Sync to the DB before starting the server
 var db = require("./models");
@@ -12,7 +14,7 @@ var PORT = process.env.PORT || 3000;
 var app = express();
 
 // Setup Passport session requirements
-app.use(express.cookieParser());
+// app.use(cookieparser());
 app.use(session({ secret: 'cats' }));
 app.use(passport.initialize());
 app.use(passport.session());
@@ -39,6 +41,11 @@ app.use(bodyParser.json());
 // 	// `req.user` contains the authenticated user.
 // 	res.redirect('/users/' + req.user.username);
 // });
+
+// Basic route that sends the user to the survey page
+app.get("/", function(req, res) {
+	res.sendFile(path.join(__dirname, "login_form.html"));
+});
 
 app.post('/login', passport.authenticate('local', {
 	successRedirect: '/',
