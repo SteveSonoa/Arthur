@@ -1,58 +1,52 @@
-// Require the necessary packages
-var express = require('express');
-var session = require("express-session");
-var bodyParser = require('body-parser');
-var passport = require('passport'), LocalStrategy = require('passport-local').Strategy;
-var path = require('path');
-// var cookieparser = require("cookieparser");
+// Require dependencies
+const express = require("express");
+const bodyParser = require("body-parser");
+const methodOverride = require('method-override');
+const cookieParser = require('cookie-parser');
+const logger = require("morgan");
 
-// Sync to the DB before starting the server
-var db = require("./models");
-db.sequelize.sync();
+const app = express();
+const PORT = process.env.PORT || 3000;
 
-var PORT = process.env.PORT || 3000;
-var app = express();
+// Authentication Packages
+var session = require('express-session');
+var passport = require('passport');
 
-// Setup Passport session requirements
-// app.use(cookieparser());
-app.use(session({ secret: 'cats' }));
+// Initalize Sequelize with session store
+var SequelizeStore = require('connect-session-sequelize')(session.Store);
+
+// Require models
+const db = require('./models');
+
+app.use(express.static("public"));
+
+// Run Morgan for logging
+app.use(logger("dev"));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.text());
+app.use(bodyParser.json({ type: "application/vnd.api+json" }));
+
+app.use(cookieParser());
+app.use(session({
+  secret: 'therussianthirteen',
+  resave: false,
+  saveUninitialized: false, // Create cookies for logged in users only
+  // cookie: { secure: true}  // Only use if using HTTPS
+}));
+
+
+
 app.use(passport.initialize());
 app.use(passport.session());
 
-// Serve static content for the app from the "public" directory in the application directory.
-app.use(express.static("public"));
-
-// parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: false }));
-
-// parse application/json
-app.use(bodyParser.json());
-
-// Set Handlebars.
-// var exphbs = require("express-handlebars");
-
-// app.engine("handlebars", exphbs({ defaultLayout: "main" }));
-// app.set("view engine", "handlebars");
-
 // Routes
-// =============================================================
-// app.post('/login', passport.authenticate('local'), function(req, res) {
-// 	// If this function gets called, authentication was successful.
-// 	// `req.user` contains the authenticated user.
-// 	res.redirect('/users/' + req.user.username);
-// });
+require('./routes/routes.js')(app);
+require('./routes/login-routes.js')(app);
 
-// Basic route that sends the user to the survey page
-app.get("/", function(req, res) {
-	res.sendFile(path.join(__dirname, "login_form.html"));
-});
-
-app.post('/login', passport.authenticate('local', {
-	successRedirect: '/',
-	failureRedirect: '/login',
-	failureFlash: true
-}));
-
-app.listen(PORT, function() {
-  console.log("App now listening at localhost:" + PORT);
+// Sync database prior to starting the server
+db.sequelize.sync({}).then(function() {
+  app.listen(PORT, function() {
+      console.log("The magic happens on PORT " + PORT);
+  })
 });
