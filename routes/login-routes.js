@@ -18,6 +18,8 @@ module.exports = function(app) {
         bcrypt.hash(passwordEntered, saltRounds).then(passwordHash => {
             // Create and add new employee to database
             db.Admin.create({
+                fname: req.body.fname,
+                lname: req.body.lname,
                 username: req.body.username,
                 password: passwordHash,
                 admin: req.body.admin
