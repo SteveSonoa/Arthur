@@ -1,20 +1,13 @@
-// Sequelize (capital) references the standard library
 var Sequelize = require("sequelize");
 // sequelize (lowercase) references our connection to the DB.
-var sequelize = require("../config/connection.js");
-
-// Creates a "Contact" model that matches up with DB
-var Contact = sequelize.define("contact", {
+var sequelize = require("../config/config.json");
+module.exports = function(sequelize) {
+    let Contact = sequelize.define("contact", {
   // contact first name saved as a string
-  contact_fname: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
-
-  contact_lname: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
+  contact_fname: Sequelize.STRING,
+  // contact last name saved as a string
+  contact_fname: Sequelize.STRING,
+  // contact email saved as a string
   contact_email: Sequelize.STRING,
   // contact company (a string)
   contact_company: Sequelize.STRING,
@@ -41,9 +34,5 @@ var Contact = sequelize.define("contact", {
 }, {
   timestamps: false
 });
-
-// Syncs with DB
-Contact.sync();
-
-// Makes the Character Model available for other files (will also create a table)
-module.exports = Contact;
+return Contact;
+};

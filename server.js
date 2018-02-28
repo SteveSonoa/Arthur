@@ -60,7 +60,7 @@ app.get('/', function(req, res) {
 });
 
 // Routes
-require('./routes/routes.js')(app);
+// require('./routes/routes.js')(app);
 require('./routes/login-routes.js')(app);
 require('./routes/html-routes.js')(app);
 
