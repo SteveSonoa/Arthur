@@ -62,6 +62,7 @@ app.get('/', function(req, res) {
 // Routes
 require('./routes/routes.js')(app);
 require('./routes/login-routes.js')(app);
+require('./routes/html-routes.js')(app);
 
 // Sync database prior to starting the server
 db.sequelize.sync({}).then(function() {
@@ -69,3 +70,12 @@ db.sequelize.sync({}).then(function() {
       console.log("The magic happens on PORT " + PORT);
   })
 });
+
+
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }))
+ 
+// parse application/json
+app.use(bodyParser.json())
+ 
+

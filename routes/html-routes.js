@@ -62,3 +62,28 @@ module.exports = function(app) {
 
 
 
+
+
+var path = require('path');
+
+module.exports = function (app) {
+
+
+    app.get('/signUpPage', function(req,res) {
+        res.sendFile(path.join(__dirname + '/../public/signUpPage.html'));
+    });
+
+    app.get('/loginPage', function(req,res) {
+        res.sendFile(path.join(__dirname + '/../public/loginPage.html'));
+    });
+
+    app.get('/profilePage', function(req,res) {
+        res.sendFile(path.join(__dirname + '/../public/profilePage.html'));
+    });
+
+    app.use( function(req,res) {
+        res.sendFile(path.join(__dirname + '/../public/splashPage.html'));
+    });
+}
+
+
