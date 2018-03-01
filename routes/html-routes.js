@@ -61,23 +61,23 @@ module.exports = function(app) {
 };
 
 
-
-
-
 var path = require('path');
 
 module.exports = function (app) {
 
-
-    app.get('/signUpPage', function(req,res) {
+    app.get('/signUp', function(req,res) {
         res.sendFile(path.join(__dirname + '/../public/signUpPage.html'));
     });
 
-    app.get('/loginPage', function(req,res) {
+    app.get('/login', function(req,res) {
         res.sendFile(path.join(__dirname + '/../public/loginPage.html'));
     });
 
-    app.get('/profilePage', function(req,res) {
+    app.get('/recentSearch', function(req,res) {
+        res.sendFile(path.join(__dirname + '/../public/profilePage.html'));
+    });
+
+    app.get('/recentSearch', function(req,res) {
         res.sendFile(path.join(__dirname + '/../public/profilePage.html'));
     });
 
