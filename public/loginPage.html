@@ -10,44 +10,56 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
+
 </head>
 
-<body>
+<body class="text-center">
+    <form class="form-signin">
 
-    <img src="img/logo.png" class="centeredSignUp" alt="Logo View" height="320" width "320">
+        <img class="mb-4" src="img/logo.png" alt="Logo View" height="320" width "320">
 
-    <h1 class="welcomeBack"> Welcome Back.</h1>
+        <h1 class="welcomeBack"> Welcome Back.</h1>
+        <label class="sr-only" for="inputEmail">Email Address</label>
+        <input id="inputEmail" class="form-control" placeholder="Email Address" type: "email">
 
-    <section class="h-100">
-        <header class="container h-100">
-            <div class="d-flex align-items-center justify-content-center h-100">
-                <div class="d-flex flex-column">
+        <label class="sr-only" for="inputPassword">Password</label>
+        <input id="inputPassword" class="form-control" placeholder="Password" type: "password">
 
-                    <!-- <div class="text-centerLogin">
-            <form> -->
-                    <div class="col-md-2 mb-2">
-                        <label for="validationServer01"></label>
-                        <input type="text" class="form-control" id="validationServer01" placeholder="First Name" required>
-                    </div>
+        <div clas= "checkbox mb-3">
+            <label>
+                <input value="remember-me" type="checkbox">
+                Remember Me 
+            </label>
+        </div>
 
-                    <div class="col-md-2 mb-2">
-                        <label for="validationServer02"></label>
-                        <input type="text" class="form-control" id="validationServer02" placeholder="Last Name" required>
-                    </div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        <p class="mt-5 mb-3 text-muted">© 2017-2018</p>
+        
 
-                    <div class="col-md-2 mb-2">
-                        <label for="validationServer04"></label>
-                        <input type="text" class="form-control" id="validationServer04" placeholder="@gmail.com" required>
-                        <br>
-                        <button class="btn btn-info" type="submit">Submit</button>
-                    </div>
 
-                    </form>
-                </div>
-            </div>
-            </div>
-        </header>
-    </section>
+
+
+        <!-- <div class="col-md-2 mb-2">
+            <label for="validationServer01"></label>
+            <input type="text" class="form-control" id="validationServer01" placeholder="First Name" required>
+        </div>
+
+        <div class="col-md-2 mb-2">
+            <label for="validationServer02"></label>
+            <input type="text" class="form-control" id="validationServer02" placeholder="Last Name" required>
+        </div>
+
+        <div class="col-md-2 mb-2">
+            <label for="validationServer04"></label>
+            <input type="text" class="form-control" id="validationServer04" placeholder="@gmail.com" required>
+            <br>
+            <button class="btn btn-info" type="submit">Submit</button>
+        </div> -->
+    </form>
+
+
+
+
 
 
 </body>

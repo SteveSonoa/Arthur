@@ -1,6 +1,35 @@
 body {
-	background-color: lightblue; 
+    background-color: lightblue; 
+    display: flex;
+    -webkit-box-align:center;
+    align-items: center; 
+    -webkit-box-pack:center;
+    -moz-box-pack: center;
+    justify-content: center; 
+    padding-top: 40px;
+    padding-bottom: 40px;
+
 }
+
+.text-center {
+    text-align: center !important;
+}
+
+.form-signin {
+    width: 100%;
+    max-width: 330px;
+    padding: 15px;
+    padding-top: 15px;
+    padding-right: 15px;
+    padding-bottom: 15px;
+    padding-left: 15px;
+    margin: 0 auto;
+    margin-top: 0px;
+    margin-right: auto;
+    margin-bottom: 0px;
+    margin-left: auto;
+}
+
 
 .welcome {
 	text-align: center;
@@ -41,19 +70,23 @@ body {
 }
 
 .welcomeBack {
-    text-align: center;
-	margin-top:300px;
 	color: white;
     font-size: 50px;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-style: normal;
 	font-variant: normal;
     font-weight: 500;
-    position: fixed;
-    top: 11%;
+
+}
+
+.centereddiv {
+    background-color: #000; 
+    position: absolute;
+    width: 500px; 
+    height: 500px; 
+    top: 30%; 
     left: 50%;
     transform: translate(-50%, -50%);
-
 }
 
 .signUp {
@@ -69,15 +102,3 @@ body {
     top: 11%;
     left: 50%;
     transform: translate(-50%, -50%);
-}
-
-.inputBoxSignUp {
-  
-}
-
-.inputBoxLogin {
-   
-}
-
-
-
