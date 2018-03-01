@@ -63,6 +63,11 @@ app.get('/', function(req, res) {
 // require('./routes/routes.js')(app);
 require('./routes/login-routes.js')(app);
 require('./routes/html-routes.js')(app);
+// Routes
+// =============================================================
+require("./routes/twitterapi.js")(app);
+console.log("Tweets " + tweets());
+
 
 // Sync database prior to starting the server
 db.sequelize.sync({}).then(function() {
