@@ -1,13 +1,14 @@
 body {
     background-color: lightblue; 
+    height: 100%; 
     display: flex;
     -webkit-box-align:center;
     align-items: center; 
     -webkit-box-pack:center;
     -moz-box-pack: center;
     justify-content: center; 
-    padding-top: 40px;
-    padding-bottom: 40px;
+    /* padding-top: 40px; */
+    padding-bottom: 300px;
 
 }
 
@@ -29,6 +30,11 @@ body {
     margin-bottom: 0px;
     margin-left: auto;
 }
+
+.mb-4 {
+    margin-bottom: 1.5rem !important;
+}
+
 
 
 .welcome {
