@@ -39,7 +39,15 @@ module.exports = function(sequelize, DataTypes) {
             // No validation; this will be a hash value
         }
     }); 
-
+    
+    User.associate = function(models) {
+    // Associating User with Contacts
+    // When a User is deleted, also delete any associated Posts
+    User.hasMany(models.Contact, {
+      onDelete: "cascade"
+    });
+  };
+  
     return User;
 };
     
