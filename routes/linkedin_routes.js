@@ -1,6 +1,6 @@
 // Require the necessary packages
 // const bodyParser = require('body-parser');
-const Linkedin = require('node-linkedin')('86iqdrrwi4ttfs', 'Mi8cFFT1VKvypzTu','987654321');
+const Linkedin = require('node-linkedin')('86iqdrrwi4ttfs','Mi8cFFT1VKvypzTu','987654321');
 const querystring = require('querystring');
 const OauthParams = require('../config/OauthParams.js');
 const fs = require('fs');
