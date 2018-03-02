@@ -71,11 +71,11 @@ console.log("Tweets " + tweets());
 
 
 // Sync database prior to starting the server
-db.sequelize.sync({}).then(function() {
+// db.sequelize.sync({}).then(function() {
   app.listen(PORT, function() {
       console.log("The magic happens on PORT " + PORT);
   })
-});
+// });
 
 
 // parse application/x-www-form-urlencoded
