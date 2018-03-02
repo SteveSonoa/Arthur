@@ -9,7 +9,7 @@ module.exports = function(app) {
     app.get('/', function(req, res) {
         // If user is logged in, visit the main page
         // If user is not logged in, visit splash page
-        res.sendFile(path.join(__dirname, "../public/index.html"));
+        res.sendFile(path.join(__dirname, "../public/login.html"));
 
     });
 
