@@ -15,13 +15,12 @@ var session = require('express-session');
 var passport = require('passport');
 
 // Initalize Sequelize with session store
-// var SequelizeStore = require('connect-session-sequelize')(session.Store);
+var SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 // Require models
-// const db = require('./models');
+const db = require('./models');
 
 app.use(express.static("public"));
-
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -47,25 +46,6 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-// Initialize LinkedIn Authorization
-app.get('/', function(req, res) {
-    // This will ask for permisssions etc and redirect to callback url. 
-    // Linkedin.auth.authorize(res, scope);
-
-    Linkedin.auth.getAccessToken(res, req.query.code, req.query.state, function(err, results) {
-        if ( err )
-            return console.error(err);
- 
-        /**
-         * Results have something like:
-         * {"expires_in":5184000,"access_token":". . . ."}
-         */
- 
-        console.log(results);
-        return res.end();
-    });
-});
-
 // Routes
 // require('./routes/routes.js')(app);
 require('./routes/login-routes.js')(app);
@@ -78,9 +58,9 @@ console.log("Tweets " + tweets());
 
 
 // Sync database prior to starting the server
-// db.sequelize.sync({}).then(function() {
+db.sequelize.sync({}).then(function() {
   app.listen(PORT, function() {
       console.log("The magic happens on PORT " + PORT);
   })
-// });
+});
 
