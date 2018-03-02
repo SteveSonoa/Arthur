@@ -1,0 +1,37 @@
+{
+  "name": "arthur",
+  "version": "1.0.0",
+  "description": "Your personal assistant will alert you to upcoming meetings and brief you on the person you're meeting with, including recent activities and breaking news.",
+  "main": "server.js",
+  "dependencies": {
+    "bcrypt": "^1.0.3",
+    "body-parser": "^1.18.2",
+    "connect-session-sequelize": "^5.2.0",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.16.2",
+    "express-session": "^1.15.6",
+    "linkedin": "0.0.2",
+    "method-override": "^2.3.10",
+    "morgan": "^1.9.0",
+    "mysql2": "^1.5.2",
+    "node-linkedin": "^0.5.6",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "sequelize": "^4.33.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SteveSonoa/Arthur.git"
+  },
+  "author": "Steve Marshall, Holly Zoba, Julian Sandersius",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SteveSonoa/Arthur/issues"
+  },
+  "homepage": "https://github.com/SteveSonoa/Arthur#readme"
+}
