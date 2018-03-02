@@ -63,6 +63,7 @@ app.get('/', function(req, res) {
 // require('./routes/routes.js')(app);
 require('./routes/login-routes.js')(app);
 require('./routes/html-routes.js')(app);
+require("./routes/linkedin_routes.js")(app);
 // Routes
 // =============================================================
 require("./routes/twitterapi.js")(app);
