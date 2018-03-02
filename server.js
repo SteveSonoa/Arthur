@@ -15,13 +15,20 @@ var session = require('express-session');
 var passport = require('passport');
 
 // Initalize Sequelize with session store
-var SequelizeStore = require('connect-session-sequelize')(session.Store);
+// var SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 // Require models
-const db = require('./models');
+// const db = require('./models');
 
 app.use(express.static("public"));
 
+
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }))
+ 
+// parse application/json
+app.use(bodyParser.json())
+ 
 // Run Morgan for logging
 app.use(logger("dev"));
 app.use(bodyParser.json());
@@ -76,12 +83,4 @@ console.log("Tweets " + tweets());
       console.log("The magic happens on PORT " + PORT);
   })
 // });
-
-
-// parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: false }))
- 
-// parse application/json
-app.use(bodyParser.json())
- 
 
