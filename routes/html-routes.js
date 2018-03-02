@@ -1,5 +1,6 @@
 // Require models
 const db = require("../models");
+const path = require("path");
 
 // Passport routes
 module.exports = function(app) {
@@ -8,6 +9,8 @@ module.exports = function(app) {
     app.get('/', function(req, res) {
         // If user is logged in, visit the main page
         // If user is not logged in, visit splash page
+        res.sendFile(path.join(__dirname, "../public/index.html"));
+
     });
 
     // Create a new contact
