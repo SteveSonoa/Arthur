@@ -1,4 +1,4 @@
-//NY Times API call 
+//NY Times API call
 var authKey = "a830dde6a9634e7395ffbace401c20ee";
 // These variables will hold the results we get from the user's inputs via HTML
 var searchTerm = "";
@@ -8,39 +8,33 @@ var numResults = 4;
 
 // queryURLBase is the start of our API endpoint. The searchTerm will be appended to this when
 // the user hits the search button
-var queryURLBase = "https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=" +
-  authKey + "&q=";
+var queryURLBase =
+  "https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=" +
+  authKey +
+  "&q=";
 
 // Counter to keep track of article numbers as they come in
 var articleCounter = 1;
-
 // FUNCTIONS
 // ==========================================================
-
 // This runQuery function expects two parameters:
 // (the number of articles to show and the final URL to download data from)
 function runQuery(numArticles, queryURL) {
-
   // The AJAX function uses the queryURL and GETS the JSON data associated with it.
   // The data then gets stored in the variable called: "NYTData"
-
   $.ajax({
     url: queryURL,
     method: "GET"
   }).done(function(NYTData) {
-
     // Logging the URL so we have access to it for troubleshooting
     console.log("------------------------------------");
     console.log("URL: " + queryURL);
     console.log("------------------------------------");
-
     // Log the NYTData to console, where it will show up as an object
     console.log(NYTData);
     console.log("------------------------------------");
-
     // Loop through and provide the correct number of articles
     for (var i = 0; i < numArticles; i++) {
-
       // Add to the Article Counter (to make sure we show the right number)
       articleCounter++;
 
@@ -53,12 +47,13 @@ function runQuery(numArticles, queryURL) {
       // Confirm that the specific JSON for the article isn't missing any details
       // If the article has a headline include the headline in the HTML
       if (NYTData.response.docs[i].headline !== "null") {
-        $("#article-well-" + articleCounter)
-          .append(
-            "<h3 class='articleHeadline'><span class='label label-primary'>" +
-            articleCounter + "</span><strong> " +
-            NYTData.response.docs[i].headline.main + "</strong></h3>"
-          );
+        $("#article-well-" + articleCounter).append(
+          "<h3 class='articleHeadline'><span class='label label-primary'>" +
+            articleCounter +
+            "</span><strong> " +
+            NYTData.response.docs[i].headline.main +
+            "</strong></h3>"
+        );
 
         // Log the first article's headline to console
         console.log(NYTData.response.docs[i].headline.main);
@@ -66,23 +61,28 @@ function runQuery(numArticles, queryURL) {
 
       // If the article has a byline include the headline in the HTML
       if (NYTData.response.docs[i].snippet) {
-        $("#article-well-" + articleCounter)
-          .append("<h5>" + NYTData.response.docs[i].snippet + "</h5>");
+        $("#article-well-" + articleCounter).append(
+          "<h5>" + NYTData.response.docs[i].snippet + "</h5>"
+        );
 
         // Log the first article's Author to console.
         console.log(NYTData.response.docs[i].snippet);
       }
 
       // Then display the remaining fields in the HTML (Section Name, Date, URL)
-      $("#articleWell-" + articleCounter)
-        .append("<h5>Section: " + NYTData.response.docs[i].section_name + "</h5>");
-      $("#articleWell-" + articleCounter)
-        .append("<h5>" + NYTData.response.docs[i].pub_date + "</h5>");
-      $("#articleWell-" + articleCounter)
-        .append(
-          "<a href='" + NYTData.response.docs[i].web_url + "'>" +
-          NYTData.response.docs[i].web_url + "</a>"
-        );
+      $("#articleWell-" + articleCounter).append(
+        "<h5>Section: " + NYTData.response.docs[i].section_name + "</h5>"
+      );
+      $("#articleWell-" + articleCounter).append(
+        "<h5>" + NYTData.response.docs[i].pub_date + "</h5>"
+      );
+      $("#articleWell-" + articleCounter).append(
+        "<a href='" +
+          NYTData.response.docs[i].web_url +
+          "'>" +
+          NYTData.response.docs[i].web_url +
+          "</a>"
+      );
 
       // Log the remaining fields to console as well
       console.log(NYTData.response.docs[i].pub_date);
@@ -90,9 +90,7 @@ function runQuery(numArticles, queryURL) {
       console.log(NYTData.response.docs[i].web_url);
     }
   });
-
 }
-
 // METHODS
 // ==========================================================
 
@@ -103,7 +101,7 @@ $("#run-search").on("click", function(event) {
   // (in addition to clicks).
   event.preventDefault();
 
-  var form = $('#my-form:input');
+  var form = $("#my-form:input");
   console.log(form);
 
   // Initially sets the articleCounter to 0
@@ -113,13 +111,13 @@ $("#run-search").on("click", function(event) {
   $("#well-section").empty();
 
   // Grabbing text the user typed into the search input
-  searchTerm = $("#search-term").val().trim();
+  searchTerm = $("#search-term")
+    .val()
+    .trim();
   var searchURL = queryURLBase + searchTerm;
 
   // Number of results the user would like displayed
   numResults = 4;
-
-  
 
   // Then we will pass the final searchURL and the number of results to
   // include to the runQuery function
