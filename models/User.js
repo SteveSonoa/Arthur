@@ -44,7 +44,7 @@ module.exports = function(sequelize, DataTypes) {
   //   // Associating User with Contacts
   //   // When a User is deleted, also delete any associated Posts
   //   User.hasMany(models.Contact, {
-  //     onSubmit: "cascade"
+
   //   });
   // };
   

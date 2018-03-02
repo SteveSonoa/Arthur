@@ -22,6 +22,12 @@ const db = require('./models');
 
 app.use(express.static("public"));
 
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }))
+ 
+// parse application/json
+app.use(bodyParser.json())
+ 
 // Run Morgan for logging
 app.use(logger("dev"));
 app.use(bodyParser.json());
@@ -40,25 +46,6 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-// Initialize LinkedIn Authorization
-app.get('/', function(req, res) {
-    // This will ask for permisssions etc and redirect to callback url. 
-    // Linkedin.auth.authorize(res, scope);
-
-    Linkedin.auth.getAccessToken(res, req.query.code, req.query.state, function(err, results) {
-        if ( err )
-            return console.error(err);
- 
-        /**
-         * Results have something like:
-         * {"expires_in":5184000,"access_token":". . . ."}
-         */
- 
-        console.log(results);
-        return res.end();
-    });
-});
-
 // Routes
 // require('./routes/routes.js')(app);
 require('./routes/login-routes.js')(app);
@@ -67,7 +54,7 @@ require("./routes/linkedin_routes.js")(app);
 // Routes
 // =============================================================
 require("./routes/twitterapi.js")(app);
-console.log("Tweets " + tweets());
+// console.log("Tweets " + tweets());
 
 
 // Sync database prior to starting the server
@@ -76,12 +63,4 @@ db.sequelize.sync({}).then(function() {
       console.log("The magic happens on PORT " + PORT);
   })
 });
-
-
-// parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: false }))
- 
-// parse application/json
-app.use(bodyParser.json())
- 
 
