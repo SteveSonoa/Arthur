@@ -54,7 +54,7 @@ require("./routes/linkedin_routes.js")(app);
 // Routes
 // =============================================================
 require("./routes/twitterapi.js")(app);
-console.log("Tweets " + tweets());
+// console.log("Tweets " + tweets());
 
 
 // Sync database prior to starting the server
