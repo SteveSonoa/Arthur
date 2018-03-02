@@ -79,7 +79,7 @@ module.exports = function(app) {
             res.json(user);
         });
     });
-
+    
 };
 
 // Passport serialization
