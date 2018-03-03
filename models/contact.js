@@ -6,7 +6,7 @@ module.exports = function(sequelize) {
         // contact first name saved as a string
         contact_fname: Sequelize.STRING,
         // contact last name saved as a string
-        contact_fname: Sequelize.STRING,
+        contact_lname: Sequelize.STRING,
         // contact email saved as a string
         contact_email: Sequelize.STRING,
         // contact company (a string)

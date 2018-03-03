@@ -4,6 +4,7 @@
   "description": "Your personal assistant will alert you to upcoming meetings and brief you on the person you're meeting with, including recent activities and breaking news.",
   "main": "server.js",
   "dependencies": {
+    "@datafire/nytimes_article_search": "^4.0.0",
     "assert": "^1.4.1",
     "bcrypt": "^1.0.3",
     "body-parser": "^1.18.2",

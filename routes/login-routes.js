@@ -10,24 +10,56 @@ const db = require("../models");
 module.exports = function(app) {
 
     // Add to the 'Admin' table (via PostMan)
-    app.post('/api/add-admin', function(req, res) {
+    app.post('/api/add-user', function(req, res) {
         
+        if (req.body.username.length === 0){
+            var error = "The email cannot be empty";
+            return res.status(400).json({
+                    status: 400, 
+                    data: {
+                        msg: error
+                    }
+                })
+        }
+
+        if (req.body.password.length === 0){
+            var error = "The password cannot be empty";
+            return res.status(400).json({
+                    status: 400, 
+                    data: {
+                        msg: error
+                    }
+                })
+        }
         const passwordEntered = req.body.password;
         // Create salt rounds, used to generate salt for 'bcrypt'
         const saltRounds = 10;
         // Generate a salt and a hash for password, using 'bcrypt'
         bcrypt.hash(passwordEntered, saltRounds).then(passwordHash => {
             // Create and add new employee to database
-            db.Admin.create({
-                fname: req.body.fname,
-                lname: req.body.lname,
+            db.User.create({
+                fname: req.body.firstName,
+                lname: req.body.lastName,
+                linkedin:req.body.linkedInURL,
                 username: req.body.username,
                 password: passwordHash,
-                admin: req.body.admin
+                
             }).then(function(data) {
-                // After successful login, route to /admin area
-                res.redirect('/admin');
-                console.log(data);
+                // After successful sign up, route to login area
+                //res.redirect(200,'/api/login');
+                // res.sendFile(path.join(__dirname + '/../public/recentSearch.html'));
+                res.status(200).json({
+                    status:200,
+                    data: {}
+                })
+
+            }).catch(function(error){
+                return res.status(400).json({
+                    status: 400, 
+                    data: {
+                        msg: error.errors[0].message
+                    }
+                })
             });
         });
 
@@ -70,12 +102,22 @@ module.exports = function(app) {
                     console.log('UserID: ' + employee.id);
                     req.login(employee.id, (err) => {
                         console.log('Password is valid! Open Sesame...');
-                        res.redirect('/admin');
+                        // res.redirect('/recentSearch.html');
+                        //res.sendFile(path.join(__dirname + '/../public/recentSearch.html'));
+                        res.status(200).json({
+                            status:200,
+                            data: {}
+                        })
                     });
                 }
                 else {
-                    console.log('Password does not match');
-                    res.redirect('/login');
+                    res.status(400).json({
+                        status:400,
+                        data: {
+                            msg:"Password does not match"
+                        }
+                    })
+                    
                 }
             }
         });
@@ -90,7 +132,21 @@ module.exports = function(app) {
         res.sendFile(path.join(__dirname + '/../public/login.html'));
     });
     
+    // Sign Up page
+    app.get('/signUp', function(req, res) {
+        
+        res.sendFile(path.join(__dirname + '/../public/signUp.html'));
+    });
+
+    app.get('/recentSearch.html', function(req, res) {
+        // db.User.findAll({}).then(function(user) {
+        //     res.json(user);
+        // });
+        res.sendFile(path.join(__dirname + '/../public/recentSearch.html'));
+        
+    });
 };
+
 
 // Passport serialization
 passport.serializeUser((user_id, done) => {
