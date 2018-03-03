@@ -1,1 +1,1 @@
-const APIPath = "http://localhost:3000";
+const APIPath = "https://my-arthur.herokuapp.com";
