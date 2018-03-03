@@ -14,11 +14,16 @@ $(document).ready(function(){
 			},
 			method:"post"
 		}).then(function(res){
+
 			if (res.status !== 200){
 				let errorMessage = res.data.msg;
 				$("#errorMessage").removeClass("hide").text(errorMessage);
 			}
+			else{ 
+				window.location.href=APIPath+"/recentSearch.html";
+			}
 		})
+
 	})
 
 })

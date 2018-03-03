@@ -3,6 +3,8 @@ $(document).ready(function(){
 	$("#signUpButton").on("click", function(event){
 		event.preventDefault();
 
+		$("#errorMessage").addClass("hide")
+
 		var firstName = $("#inputFirstName").val();
 		var lastName = $("#inputLastName").val();
 		var linkedInURL = $("#inputLinkedInURL").val();
@@ -18,12 +20,18 @@ $(document).ready(function(){
 				username:email,
 				password:password
 			},
-			method:"post"
-		}).then(function(res){
-			console.log(res);
-			if (res.status !== 200){
-				let errorMessage = res.data.msg;
-				$("#errorMessage").removeClass("hide").text(errorMessage);
+			method:"post",
+			success: function(res){
+				//console.log(res.statusCode);
+				window.location.href=APIPath+"/recentSearch.html";
+			},
+			error: function(res){
+				console.log(res);
+				if (res.status !== 200){
+					let errorMessage = res.responseJSON.data.msg;
+					$("#errorMessage").removeClass("hide").text(errorMessage);
+				}	
+
 			}
 		})
 	})

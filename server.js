@@ -53,7 +53,7 @@ require('./routes/html-routes.js')(app);
 require("./routes/linkedin_routes.js")(app);
 // Routes
 // =============================================================
-require("./routes/twitterapi.js")(app);
+require("./routes/socialmedia-routes.js")(app);
 // console.log("Tweets " + tweets());
 
 
