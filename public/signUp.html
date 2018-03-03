@@ -4,12 +4,21 @@
 <head>
     <meta charset="UTF-8">
     <title>Arthur</title>
+    
+    <!-- Jquery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
         crossorigin="anonymous">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
+
+    <!-- Scripts -->
+    <script src="./constants.js"></script>
+    <script src="./signUp.js"></script>
+
 </head>
 
 <body class="text-center">
@@ -20,33 +29,28 @@
         <h1 class="welcomeBack"> Let's get you set up. </h1>
 
         <label class="sr-only" for="inputFirstName">First Name</label>
-        <input id="inputEmail" class="form-control" placeholder="First Name" type: "First Name">
+        <input id="inputFirstName" class="form-control" placeholder="First Name" type="text">
 
         <label class="sr-only" for="inputLastName">Last Name</label>
-        <input id="inputPassword" class="form-control" placeholder="Last Name" type: "Last Name">
+        <input id="inputLastName" class="form-control" placeholder="Last Name" type="text">
 
-        <label class="sr-only" for="inputCompany">Company</label>
-        <input id="inputEmail" class="form-control" placeholder="Company" type: "Company">
+        <label class="sr-only" for="inputLinkedInURL">LinkedIn URL</label>
+        <input id="inputLinkedInURL" class="form-control" placeholder="LinkedIn URL" type="text">
 
         <label class="sr-only" for="inputEmail">Email Address</label>
-        <input id="inputEmail" class="form-control" placeholder="Email Address" type: "email">
-
-        <label class="sr-only" for="inputEmail">LinkedIn Username</label>
-        <input id="inputEmail" class="form-control" placeholder="LinkedIn Username" type: "LinkedIn Username">
-
-        <label class="sr-only" for="inputEmail">Twitter Handle</label>
-        <input id="inputEmail" class="form-control" placeholder="Twitter Handle" type: "Twitter Handle">
+        <input id="inputEmail" class="form-control" placeholder="Email Address" type="text">
 
         <label class="sr-only" for="inputPassword">Password</label>
-        <input id="inputPassword" class="form-control" placeholder="Password" type: "password">
+        <input id="inputPassword" class="form-control" placeholder="Password" type="password">
 
-        <div clas="checkbox mb-3">
-            <label>
-                <input value="remember-me" type="checkbox"> Remember Me
-            </label>
-        </div>
+        <p class="hide alert alert-danger" id="errorMessage" role="alert"></p>
 
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        <button class="btn btn-lg btn-primary btn-block" id="signUpButton" type="submit">Sign Me Up</button>
+
+        <br>
+         <a href="./login.html">
+            <button type="button" class="btn btn-lg btn-primary btn-block" href="#" role="button"> Sign In </button>
+        </a>
         <p class="mt-5 mb-3 text-muted">©Arthur 2018</p>
 
     </form>

@@ -23,5 +23,14 @@ module.exports = function(app) {
       res.json(dbUser);
     });
   });
-  
+   app.delete("/api/user/:id", function(req, res) {
+    // Delete the Author with the id available to us in req.params.id
+    db.User.destroy({
+      where: {
+        id: req.params.id
+      }
+    }).then(function(dbUser) {
+      res.json(dbUser);
+    });
+  });
 };

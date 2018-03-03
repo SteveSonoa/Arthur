@@ -1,6 +1,7 @@
 // Require dependencies
 const bcrypt = require('bcrypt');
 const passport = require('passport');
+const path = require("path");
 
 // Require models
 const db = require("../models");
@@ -40,8 +41,8 @@ module.exports = function(app) {
         console.log(usernameEntered);
         console.log(passwordEntered);
 
-        // Search admin table for user credentials
-        db.Admin.findOne({
+        // Search user table for user credentials
+        db.User.findOne({
             where: {
                 username: usernameEntered,
             }
@@ -50,8 +51,16 @@ module.exports = function(app) {
 
             // Check if matching username was found in database
             if (employee === null) {
-                console.log(`Could not find username '${usernameEntered}' in database.`);
-                res.redirect('/login');
+                let error = `Username '${usernameEntered}' does not exist.`;
+
+                console.log(error);
+                return res.json({
+                    status: 404, 
+                    data: {
+                        msg: error
+                    }
+                })
+                //res.redirect('/login');
             }
             else {
                 // Compare password entered to password stored in database, using 'bcrypt'
@@ -74,12 +83,13 @@ module.exports = function(app) {
     });
 
     // Login page
-    app.get('/api/login', function(req, res) {
-        db.Admin.findAll({}).then(function(user) {
-            res.json(user);
-        });
+    app.get('/login', function(req, res) {
+        // db.User.findAll({}).then(function(user) {
+        //     res.json(user);
+        // });
+        res.sendFile(path.join(__dirname + '/../public/login.html'));
     });
-
+    
 };
 
 // Passport serialization

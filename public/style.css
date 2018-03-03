@@ -47,7 +47,6 @@ body {
     margin-left: auto;
 }
 
-
 .mb-4 {
     margin-bottom: 1.5rem !important;
 }
@@ -121,3 +120,7 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
 }     
+
+.hide {
+    display: none;
+}
