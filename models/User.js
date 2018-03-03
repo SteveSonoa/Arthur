@@ -4,32 +4,22 @@ module.exports = function(sequelize, DataTypes) {
 
         fname: {
             type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-            notEmpty: { msg: 'The first name is required' }
-            }       
+            allowNull: false
         },
 
         lname: {
             type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-            notEmpty: { msg: 'The last name is required' }
-            } 
+            allowNull: false
         },
 
         linkedin: {
             type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-            notEmpty: { msg: 'The LinkedIn URL is required' }
-            } 
+            allowNull: true
         },
 
         username: {
             type: DataTypes.STRING,
             allowNull: false,
-            notEmpty: { msg: 'The username is required' },
             unique: {
                 args: true,
                 msg: 'Sorry, that email is already in use.',
@@ -40,7 +30,6 @@ module.exports = function(sequelize, DataTypes) {
                     args: 15,
                     msg: 'The username you entered is invalid or more than 20 characters.'
                 }
-                
             }
         },
 
@@ -48,14 +37,6 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.STRING,
             allowNull: false,
             // No validation; this will be a hash value
-            notEmpty: { msg: 'The password is required' },
-            validate: {
-                len: {
-                    args: [8],
-                    msg: 'The password needs to be at least 8 characters.'
-                }
-                
-            }
         }
     }); 
     
